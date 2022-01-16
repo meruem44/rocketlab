@@ -1,5 +1,6 @@
 import React, { useCallback, memo } from "react";
 import { Linking } from "react-native";
+import { Article } from "src/dtos/Article";
 
 import {
   Container,
@@ -15,45 +16,49 @@ import {
   TimeRead,
 } from "./styles";
 
-const CardArticle: React.FC = () => {
+interface CardArticleComponentProps {
+  data: Article;
+}
+
+const CardArticleComponent: React.FC<CardArticleComponentProps> = ({
+  data,
+}) => {
   const handleOpenLink = useCallback(async () => {
-    await Linking.openURL(
-      "https://blog.rocketseat.com.br/axios-um-cliente-http-full-stack/"
-    );
-  }, []);
+    await Linking.openURL(data?.url);
+  }, [data]);
 
   return (
     <Container onPress={handleOpenLink}>
       <ContainerBanner>
         <Banner
           source={{
-            uri: "https://blog.rocketseat.com.br/content/images/size/w600/2020/10/dark-mode-com-css-mudando-a-aparencia-do-blog-de-maneira-simples-e-rapida.jpg",
+            uri: data?.thumbnail,
           }}
         />
       </ContainerBanner>
 
       <Content>
         <GroupInfo>
-          <ContainerTags>
+          {/* <ContainerTags>
             <Tag>javascript</Tag>
             <Tag>javascript</Tag>
             <Tag>javascript</Tag>
             <Tag>javascript</Tag>
             <Tag>javascript</Tag>
             <Tag>javascript</Tag>
-          </ContainerTags>
+          </ContainerTags> */}
 
-          <Title>Axios - um cliente HTTP Full stack</Title>
+          <Title>{data?.title}</Title>
         </GroupInfo>
 
         <Footer>
           <PostDate>há 1 ano</PostDate>
 
-          <TimeRead>3 min de leitura</TimeRead>
+          <TimeRead>{`${data?.time_ready} min de leitura`}</TimeRead>
         </Footer>
       </Content>
     </Container>
   );
 };
 
-export { CardArticle };
+export const CardArticle = memo(CardArticleComponent);

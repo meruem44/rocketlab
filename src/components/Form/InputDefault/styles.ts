@@ -15,7 +15,7 @@ export const Content = styled.View<StateProps>`
   align-items: center;
   height: ${RFValue(50)}px;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.bg};
+  background-color: ${({ theme }) => theme.colors.bgExtraLight};
   border-radius: ${RFValue(5)}px;
 
   ${({ isFocus }) =>
@@ -36,7 +36,7 @@ export const Content = styled.View<StateProps>`
 export const TextInput = styled.TextInput`
   flex: 1;
   color: ${({ theme }) => theme.colors.shape};
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(16)}px;
   font-family: ${({ theme }) => theme.fonts.primary400};
 `;
 

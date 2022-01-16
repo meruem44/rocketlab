@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.TouchableOpacity`
-  height: ${RFValue(380)}px;
+  height: ${RFValue(320)}px;
   background-color: ${({ theme }) => theme.colors.bgLight};
   margin-bottom: ${RFValue(20)}px;
   border-radius: ${RFValue(10)}px;

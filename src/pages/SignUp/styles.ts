@@ -1,23 +1,30 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Scroll = styled.ScrollView`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.bg};
+`;
+
+export const Container = styled.View`
+  flex: 1;
+
   justify-content: center;
-  padding: ${({ theme }) => theme.metrics.marginTop}px 5%
+  padding: 0px ${({ theme }) => theme.metrics.paddingHorizontal}
     ${({ theme }) => theme.metrics.marginBottom}px;
+
+  margin: ${RFValue(20)}px 0px;
 `;
 
 export const Title = styled.Text`
-  font-size: ${RFValue(25)}px;
+  font-size: ${RFValue(20)}px;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.primary700};
   margin: ${RFValue(10)}px 0px;
 `;
 
 export const SubTile = styled.Text`
-  font-size: ${RFValue(18)}px;
+  font-size: ${RFValue(16)}px;
   color: ${({ theme }) => theme.colors.description};
   font-family: ${({ theme }) => theme.fonts.primary400};
 `;
@@ -27,7 +34,7 @@ export const Content = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.bgLight};
   border-radius: ${RFValue(5)}px;
-  margin-top: ${RFValue(30)}px;
+  justify-content: center;
 `;
 
 export const Form = styled.View`
@@ -38,6 +45,7 @@ export const TextButton = styled.Text`
   font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.primary700};
+  margin-left: ${RFValue(10)}px;
 `;
 
 export const Label = styled.Text`
@@ -46,15 +54,8 @@ export const Label = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary700};
 `;
 
-export const ButtonPassword = styled.View`
-  margin-top: ${RFValue(6)}px;
-`;
-
-export const Button = styled.TouchableOpacity``;
-
-export const ContentDescription = styled.View`
+export const ContentButton = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin-top: ${RFValue(25)}px;
+  margin: ${RFValue(18)}px 0px;
 `;

@@ -17,5 +17,5 @@ export const metrics = {
   height,
   marginTop: isIphoneX() ? statusBarHeightIphoneX : statusBarHeight,
   marginBottom: isIphoneX() ? bottomSpaceIphoneX : 0,
-  paddingHorizontal: "5%",
+  paddingHorizontal: "7%",
 };

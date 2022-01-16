@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const TextButton = styled.Text`
-  font-size: ${RFValue(22)}px;
+  font-size: ${RFValue(18)}px;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.primary500};
 `;

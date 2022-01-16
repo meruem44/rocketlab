@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableOpacityProps } from "react-native";
+import { useTheme } from "styled-components";
 
 import { Container, TextButton, Load } from "./styles";
 
@@ -13,11 +14,15 @@ const ButtonPrimary: React.FC<ButtonPrimary> = ({
   isLoading,
   ...rest
 }) => {
+  const { colors } = useTheme();
+
   return (
     <Container disabled={isLoading} activeOpacity={0.9} {...rest}>
       {!isLoading && <TextButton>{textButton}</TextButton>}
 
-      {isLoading && <Load animating={isLoading} size="small" />}
+      {isLoading && (
+        <Load color={colors.shape} animating={isLoading} size="small" />
+      )}
     </Container>
   );
 };

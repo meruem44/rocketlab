@@ -5,12 +5,13 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.bg};
   justify-content: center;
-  padding: ${({ theme }) => theme.metrics.marginTop}px 5%
+  padding: ${({ theme }) => theme.metrics.marginTop}px
+    ${({ theme }) => theme.metrics.paddingHorizontal}
     ${({ theme }) => theme.metrics.marginBottom}px;
 `;
 
 export const Title = styled.Text`
-  font-size: ${RFValue(35)}px;
+  font-size: ${RFValue(25)}px;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.primary700};
   margin: ${RFValue(27)}px 0px;
@@ -29,13 +30,13 @@ export const Form = styled.View`
 `;
 
 export const TextButton = styled.Text`
-  font-size: ${RFValue(18)}px;
+  font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.primary700};
 `;
 
 export const Label = styled.Text`
-  font-size: ${RFValue(18)}px;
+  font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.primary400};
 `;

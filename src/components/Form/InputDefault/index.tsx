@@ -2,7 +2,6 @@ import React, { useCallback, useState, useRef } from "react";
 import { TextInputProps } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components";
-import { Controller, Control } from "react-hook-form";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -17,20 +16,12 @@ import {
 
 interface InputProps extends TextInputProps {
   pass?: boolean;
-  control: Control;
-  name: string;
+
   error: string;
   icon: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
 }
 
-const Input: React.FC<InputProps> = ({
-  pass,
-  control,
-  name,
-  error,
-  icon,
-  ...rest
-}) => {
+const InputDefault: React.FC<InputProps> = ({ pass, error, icon, ...rest }) => {
   const { colors } = useTheme();
 
   const [textSecurity, setTextSecurity] = useState(!!pass);
@@ -53,27 +44,17 @@ const Input: React.FC<InputProps> = ({
       <Content isFocus={isFocus} error={!!error}>
         <ContainerIcon>
           <MaterialCommunityIcons
-            color={isFocus ? colors.primary : colors.bgExtraLight}
+            color={isFocus ? colors.primary : colors.bg}
             name={icon}
-            size={RFValue(20)}
+            size={RFValue(22)}
           />
         </ContainerIcon>
-        <Controller
-          control={control}
-          name={name}
-          render={({ field: { onChange, value } }) => {
-            return (
-              <TextInput
-                onChangeText={onChange}
-                value={value}
-                placeholderTextColor={colors.bgExtraLight}
-                secureTextEntry={textSecurity}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                {...rest}
-              />
-            );
-          }}
+        <TextInput
+          placeholderTextColor={colors.bg}
+          secureTextEntry={textSecurity}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          {...rest}
         />
 
         {pass && (
@@ -93,4 +74,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export { Input };
+export { InputDefault };
