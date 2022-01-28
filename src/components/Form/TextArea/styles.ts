@@ -7,18 +7,31 @@ interface StateProps {
 }
 
 export const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.bgLight};
-  padding: ${RFValue(6)}px;
-  border-radius: ${RFValue(5)}px;
+  margin-top: ${RFValue(15)}px;
+`;
+
+export const Header = styled.View`
+  background-color: ${({ theme }) => theme.colors.bgExtraLight};
+  height: ${RFValue(40)}px;
+  padding: 0px ${RFValue(15)}px;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Label = styled.Text`
+  font-size: ${RFValue(14)}px;
+  color: ${({ theme }) => theme.colors.shape};
+  font-family: ${({ theme }) => theme.fonts.primary400};
+  margin-left: ${RFValue(10)}px;
 `;
 
 export const Content = styled.View<StateProps>`
-  flex-direction: row;
-  align-items: center;
-  height: ${RFValue(50)}px;
+  height: ${RFValue(120)}px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.bg};
-  border-radius: ${RFValue(5)}px;
+  border-bottom-left-radius: ${RFValue(5)}px;
+  border-bottom-right-radius: ${RFValue(5)}px;
+  padding: ${RFValue(15)}px;
 
   ${({ isFocus }) =>
     isFocus &&
@@ -38,14 +51,8 @@ export const Content = styled.View<StateProps>`
 export const TextInput = styled.TextInput`
   flex: 1;
   color: ${({ theme }) => theme.colors.shape};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.fonts.primary400};
-`;
-
-export const ContainerIcon = styled.View`
-  justify-content: center;
-  align-items: center;
-  margin: 0px ${RFValue(15)}px;
 `;
 
 export const Error = styled.Text`

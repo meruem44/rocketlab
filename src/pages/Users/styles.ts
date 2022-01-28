@@ -10,6 +10,7 @@ export const Container = styled.View`
 export const Content = styled.View`
   flex: 1;
   padding: 0px ${({ theme }) => theme.metrics.paddingHorizontal};
+  margin-top: ${RFValue(10)}px;
 `;
 
 export const List = styled.FlatList`
@@ -19,4 +20,5 @@ export const List = styled.FlatList`
 export const Header = styled.View`
   padding: 0px ${({ theme }) => theme.metrics.paddingHorizontal};
   margin-bottom: ${RFValue(10)}px;
+  margin-top: ${RFValue(15)}px;
 `;

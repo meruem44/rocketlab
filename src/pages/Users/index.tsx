@@ -1,32 +1,55 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
+import { api } from "@services/api";
+
+import { User } from "@dtos/User";
 
 import { CardUser } from "@components/Cards/CardUser";
 import { HeaderUsers } from "@components/Headers/HeaderUsers";
 
+import { Loading } from "@components/Loading";
+
 import { Container, Content, List, Header } from "./styles";
-import { InputDefault } from "@components/Form/InputDefault";
 
 const Users: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  const loadUsers = useCallback(async () => {
+    try {
+      const response = await api.get("/devs");
+
+      const { data } = response;
+
+      console.log(response.data);
+
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   return (
     <Container>
       <HeaderUsers />
 
-      <Header>
-        <InputDefault
-          placeholder="Digite o nome do usuário"
-          error=""
-          icon="account-search"
-        />
-      </Header>
+      {!loading && (
+        <Content>
+          <List
+            data={users}
+            keyExtractor={(_, index) => String(index)}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => <CardUser data={item as User} />}
+          />
+        </Content>
+      )}
 
-      <Content>
-        <List
-          data={[1, 2, 3, 4, 5, 6, 7, 8]}
-          keyExtractor={(_, index) => String(index)}
-          showsVerticalScrollIndicator={false}
-          renderItem={() => <CardUser />}
-        />
-      </Content>
+      {loading && <Loading isLoad={loading} />}
     </Container>
   );
 };

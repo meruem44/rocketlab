@@ -62,9 +62,7 @@ const SignIn: React.FC = () => {
       Keyboard.dismiss();
 
       try {
-        const response = await handleSignIn({ email, password });
-
-        alert(response);
+        await handleSignIn({ email, password });
       } catch (error) {
         Toast.show({
           placement: "top",

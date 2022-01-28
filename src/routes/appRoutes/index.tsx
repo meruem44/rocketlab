@@ -5,6 +5,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 
 import { TabBarRoutes } from "./tab.routes";
 import { Profile } from "@pages/Profile";
+import { ProfileUsers } from "@pages/ProfileUsers";
 
 const AppRoutes: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const AppRoutes: React.FC = () => {
     >
       <Screen name="TabBarRoutes" component={TabBarRoutes} />
       <Screen name="Profile" component={Profile} />
+      <Screen name="ProfileUsers" component={ProfileUsers} />
     </Navigator>
   );
 };

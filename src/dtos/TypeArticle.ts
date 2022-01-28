@@ -1,1 +1,1 @@
-export type TypeArticle = "frontend" | "backend" | "mobile";
+export type TypeArticle = "frontend" | "backend" | "mobile" | "";

@@ -1,4 +1,8 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { api } from "@services/api";
+
+import { FilterArticles } from "./components/FilterArticles";
+import { TypeArticle } from "src/dtos/TypeArticle";
 
 import { CardArticle } from "@components/Cards/CardArticle";
 import { HeaderLib } from "@components/Headers/HeaderLib";
@@ -6,22 +10,25 @@ import { Article } from "src/dtos/Article";
 import { Loading } from "@components/Loading";
 
 import { Container, List, Content } from "./styles";
-import { api } from "@services/api";
-import { FilterArticles } from "./components/FilterArticles";
-import { TypeArticle } from "src/dtos/TypeArticle";
 
 const RocketLib: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [typeArticle, setTypeArticle] = useState<TypeArticle>("frontend");
+  const [typeArticle, setTypeArticle] = useState<TypeArticle>("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     loadArticles();
-  }, []);
+  }, [typeArticle]);
 
   const loadArticles = useCallback(async () => {
     try {
-      const response = await api.get("/articles");
+      setIsLoading(true);
+
+      const response = await api.get("/articles", {
+        params: {
+          category: typeArticle,
+        },
+      });
 
       setArticles(response.data);
     } catch (error) {
@@ -29,7 +36,7 @@ const RocketLib: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [typeArticle]);
 
   const handleSelected = useCallback((value: TypeArticle) => {
     setTypeArticle(value);

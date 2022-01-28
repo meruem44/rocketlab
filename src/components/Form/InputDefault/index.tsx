@@ -44,13 +44,13 @@ const InputDefault: React.FC<InputProps> = ({ pass, error, icon, ...rest }) => {
       <Content isFocus={isFocus} error={!!error}>
         <ContainerIcon>
           <MaterialCommunityIcons
-            color={isFocus ? colors.primary : colors.bg}
+            color={isFocus ? colors.primary : colors.bgExtraLight}
             name={icon}
             size={RFValue(22)}
           />
         </ContainerIcon>
         <TextInput
-          placeholderTextColor={colors.bg}
+          placeholderTextColor={colors.bgExtraLight}
           secureTextEntry={textSecurity}
           onFocus={onFocus}
           onBlur={onBlur}
